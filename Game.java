@@ -1,5 +1,7 @@
 package TestTwoDimensionalGraphic;
 
+import TestTwoDimensionalGraphic.Animations.Animator;
+
 public class Game {
 
     public static Player player = new Player();

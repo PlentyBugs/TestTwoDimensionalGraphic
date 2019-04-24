@@ -1,5 +1,8 @@
 package TestTwoDimensionalGraphic;
 
+import TestTwoDimensionalGraphic.Animations.AnimationMoveTo;
+import TestTwoDimensionalGraphic.Animations.Animator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -20,41 +23,7 @@ public class MainPanel extends JPanel {
         addCreature(new Platform(0,0,720,50));
         Platform movablePlatform = new Platform(500, 200, 150, 10).setColor(Color.cyan);
 
-        AnimationMoveTo moveToOne = new AnimationMoveTo() {
-            private int xStart = movablePlatform.getModel().x;
-            private int yStart = movablePlatform.getModel().y;
-            private int xGoal = 350;
-            private int yGoal = 150;
-
-            @Override
-            public void moveTo(Creature creature, int xGoal, int yGoal) {
-                if(creature.getModel().x == xGoal && creature.getModel().y == yGoal){
-                    this.xGoal += xStart;
-                    this.yGoal += yStart;
-                    xStart = this.xGoal - xStart;
-                    yStart = this.yGoal - yStart;
-                    this.xGoal -= xStart;
-                    this.yGoal -= yStart;
-                } else {
-                    if (creature.getModel().x < xGoal)
-                        creature.getModel().addX(1);
-                    else if(creature.getModel().x > xGoal)
-                        creature.getModel().addX(-1);
-
-                    if (creature.getModel().y < yGoal)
-                        creature.getModel().addY(1);
-                    else if(creature.getModel().y > yGoal)
-                        creature.getModel().addY(-1);
-                }
-            }
-
-            @Override
-            public void play() {
-                moveTo(movablePlatform, xGoal, yGoal);
-            }
-        };
-
-        Animator.addAnimation(moveToOne);
+        Animator.addAnimation(new AnimationMoveTo(movablePlatform, 350, movablePlatform.getModel().y, true));
         addCreature(movablePlatform);
     }
 

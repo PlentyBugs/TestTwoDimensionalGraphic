@@ -1,10 +1,14 @@
-package TestTwoDimensionalGraphic;
+package TestTwoDimensionalGraphic.Animations;
 
-import java.util.ArrayList;
+import TestTwoDimensionalGraphic.Game;
+
+import java.util.Collections;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Animator {
 
-    private static ArrayList<Animation> animations = new ArrayList<>();
+    private static Set<Animation> animations = Collections.newSetFromMap(new ConcurrentHashMap<>());
 
     public Animator(){
         Thread thread = new Thread(() -> {
@@ -25,5 +29,9 @@ public class Animator {
 
     public static void addAnimation(Animation animation){
         animations.add(animation);
+    }
+
+    public static void removeAnimation(Animation animation){
+        animations.remove(animation);
     }
 }
