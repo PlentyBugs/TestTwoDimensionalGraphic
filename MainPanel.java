@@ -21,6 +21,10 @@ public class MainPanel extends JPanel {
         addCreature(new Platform(0, Game.height-80, 1440, 50));
         addCreature(new Platform(-50, 0, 50, 480));
         addCreature(new Platform(300,300,100,200));
+        addCreature(new Platform(800,300,100,200));
+        addCreature(new Platform(900,200,100,100));
+        addCreature(new Platform(1000,100,100,100));
+        addCreature(new Platform(1100,0,100,100));
         addCreature(new Platform(0,0,720,50));
         Platform movablePlatform = new Platform(500, 200, 150, 10).setColor(Color.cyan);
 

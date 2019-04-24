@@ -24,6 +24,13 @@ public class Camera extends Thread{
                     lastX = MainPanel.startX;
                     MainPanel.startX = Game.player.getModel().getX() - shift;
                 }
+                if(Game.player.getModel().getY() > lastY + Game.height - shift){
+                    lastY = MainPanel.startY;
+                    MainPanel.startY = Game.player.getModel().getY() - Game.height + shift;
+                } else if(Game.player.getModel().getY() < lastY + shift){
+                    lastY = MainPanel.startY;
+                    MainPanel.startY = Game.player.getModel().getY() - shift;
+                }
             }
         }
     }
