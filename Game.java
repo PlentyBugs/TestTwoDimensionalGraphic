@@ -2,6 +2,8 @@ package TestTwoDimensionalGraphic;
 
 import TestTwoDimensionalGraphic.Animations.Animator;
 
+import java.awt.*;
+
 public class Game {
 
     public static Player player = new Player();
@@ -12,6 +14,9 @@ public class Game {
 
     public static void main(String[] args){
         new Animator();
+        Animator.addAnimation(() -> {
+            player.getModel().setColor(new Color[]{Color.red, Color.cyan, Color.magenta, Color.ORANGE}[(int)(Math.random()*4)]);
+        });
         window = new Window(player);
         gravity = new ThatHowGravityWorks();
         gravity.addCreature(player);

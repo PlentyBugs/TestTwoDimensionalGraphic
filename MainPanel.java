@@ -21,13 +21,21 @@ public class MainPanel extends JPanel {
         addCreature(new Platform(0, Game.height-80, 1440, 50));
         addCreature(new Platform(-50, 0, 50, 480));
         addCreature(new Platform(300,300,100,200));
-        addCreature(new Platform(800,300,100,200));
-        addCreature(new Platform(900,200,100,100));
-        addCreature(new Platform(1000,100,100,100));
-        addCreature(new Platform(1100,0,100,100));
+        Platform platformOne = new Platform(800,300,100,100);
+        Platform platformTwo = new Platform(1000,200,100,100);
+        Platform platformThree = new Platform(1200,100,100,100);
+        Platform platformFour = new Platform(1400,0,100,100);
+        addCreature(platformOne);
+        addCreature(platformTwo);
+        addCreature(platformThree);
+        addCreature(platformFour);
         addCreature(new Platform(0,0,720,50));
         Platform movablePlatform = new Platform(500, 200, 150, 10).setColor(Color.cyan);
 
+        Animator.addAnimation(new AnimationMoveTo(platformOne, platformOne.getModel().x + 50, platformOne.getModel().y - 50, true));
+        Animator.addAnimation(new AnimationMoveTo(platformTwo, platformTwo.getModel().x + 50, platformTwo.getModel().y - 50, true));
+        Animator.addAnimation(new AnimationMoveTo(platformThree, platformThree.getModel().x + 50, platformThree.getModel().y - 50, true));
+        Animator.addAnimation(new AnimationMoveTo(platformFour, platformFour.getModel().x + 50, platformFour.getModel().y - 50, true));
         Animator.addAnimation(new AnimationMoveTo(movablePlatform, 350, movablePlatform.getModel().y, true));
         addCreature(movablePlatform);
     }
