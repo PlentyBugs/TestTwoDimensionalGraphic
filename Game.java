@@ -16,5 +16,6 @@ public class Game {
         gravity = new ThatHowGravityWorks();
         gravity.addCreature(player);
         gravity.start();
+        new Camera();
     }
 }
