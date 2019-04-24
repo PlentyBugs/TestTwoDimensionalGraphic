@@ -5,6 +5,7 @@ import TestTwoDimensionalGraphic.Animations.Animator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,13 @@ public class MainPanel extends JPanel {
         addCreature(new Platform(300,300,100,200));
         addCreature(new Platform(0,0,720,50));
         Platform movablePlatform = new Platform(500, 200, 150, 10).setColor(Color.cyan);
+        movablePlatform.getModel().setDrawModel(g -> {
+            Graphics2D graphics2D = (Graphics2D) g;
+            Rectangle2D.Double model = new Rectangle2D.Double(movablePlatform.getModel().getX(), movablePlatform.getModel().getY(), movablePlatform.getModel().width, movablePlatform.getModel().height);
+            graphics2D.setColor(movablePlatform.getModel().color);
+            graphics2D.rotate(Math.toRadians(45));
+            graphics2D.fill(model);
+        });
 
         Animator.addAnimation(new AnimationMoveTo(movablePlatform, 350, movablePlatform.getModel().y, true));
         addCreature(movablePlatform);

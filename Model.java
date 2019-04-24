@@ -1,5 +1,6 @@
 package TestTwoDimensionalGraphic;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
@@ -8,6 +9,7 @@ public class Model {
     protected int x,y,width,height;
     protected Color color;
     protected Creature creature;
+    protected DrawModel drawModel;
 
     public Model(int x, int y, int width, int height, Creature creature){
         this.x = x;
@@ -16,6 +18,12 @@ public class Model {
         this.height = height;
         this.creature = creature;
         color = Color.red;
+        drawModel = g -> {
+            Graphics2D graphics2D = (Graphics2D) g;
+            Rectangle2D.Double model = new Rectangle2D.Double(this.x, this.y, this.width, this.height);
+            graphics2D.setColor(color);
+            graphics2D.fill(model);
+        };
     }
 
     public Model(int x, int y, Creature creature){
@@ -27,11 +35,7 @@ public class Model {
     }
 
     public void draw(Graphics g){
-        Graphics2D graphics2D = (Graphics2D) g;
-        Rectangle2D.Double model = new Rectangle2D.Double(x, y, width, height);
-
-        graphics2D.setColor(color);
-        graphics2D.fill(model);
+        drawModel.draw(g);
     }
 
     public Model setY(int y) {
@@ -113,5 +117,13 @@ public class Model {
 
     public int getY() {
         return y;
+    }
+
+    public DrawModel getDrawModel() {
+        return drawModel;
+    }
+
+    public void setDrawModel(DrawModel drawModel) {
+        this.drawModel = drawModel;
     }
 }
