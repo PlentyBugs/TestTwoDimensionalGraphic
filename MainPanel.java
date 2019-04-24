@@ -30,12 +30,6 @@ public class MainPanel extends JPanel {
         }
     }
 
-    public void addModel(int maxX, int maxY) {
-        Random random = new Random();
-        shapes.add(new Model(random.nextInt(maxX), random.nextInt(maxY)));
-        repaint();
-    }
-
     public void addModel(int x, int y, Model model) {
         shapes.add(model.setX(x).setY(y));
         repaint();

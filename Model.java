@@ -7,17 +7,23 @@ public class Model {
 
     protected int x,y,width,height;
     protected Color color;
+    protected Creature creature;
 
-    public Model(int x, int y){
+    public Model(int x, int y, int width, int height, Creature creature){
         this.x = x;
         this.y = y;
-        width = 50;
-        height = 100;
+        this.width = width;
+        this.height = height;
+        this.creature = creature;
         color = Color.red;
     }
 
-    public Model(){
-        this(200, 200);
+    public Model(int x, int y, Creature creature){
+        this(x,y,50,100, creature);
+    }
+
+    public Model(Creature creature){
+        this(200, 200, creature);
     }
 
     public void draw(Graphics g){
@@ -43,6 +49,9 @@ public class Model {
         for (Creature s : MainPanel.creatures){
             if(s.getModel() != this && checkOnCollisionY(s.getModel(), this, y)){
                 col = true;
+                if(y > 0){
+                    creature.setOnAir(false);
+                }
                 break;
             }
         }

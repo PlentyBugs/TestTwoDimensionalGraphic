@@ -5,11 +5,13 @@ import java.awt.geom.Rectangle2D;
 
 public class Cube extends Model {
 
-    public Cube(int x, int y, int width, int height){
+    public Cube(int x, int y, int width, int height, Creature creature){
+        super(x,y,width,height,creature);
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.creature = creature;
         color = Color.green;
     }
 
@@ -22,7 +24,7 @@ public class Cube extends Model {
     }
 
 
-    public Cube(){
-        this(200, 200, 100, 100);
+    public Cube(Creature creature){
+        this(200, 200, 100, 100, creature);
     }
 }
