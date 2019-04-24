@@ -1,7 +1,5 @@
 package TestTwoDimensionalGraphic;
 
-import java.util.ArrayList;
-
 public class Creature {
 
     protected int speed;

@@ -9,6 +9,7 @@ public class Game {
     public static ThatHowGravityWorks gravity;
 
     public static void main(String[] args){
+        new Animator();
         window = new Window(player);
         gravity = new ThatHowGravityWorks();
         gravity.addCreature(player);

@@ -13,7 +13,7 @@ public class Window extends JFrame {
         setPreferredSize(new Dimension(Game.width, Game.height));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addKeyListener(player.getController());
-
+        
         getContentPane().add(mainPanel);
         drawWindow();
     }
@@ -21,11 +21,6 @@ public class Window extends JFrame {
     public void drawWindow(){
 
         setResizable(false);
-
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.anchor = GridBagConstraints.NORTH;
 
         pack();
         setLocationRelativeTo(null);

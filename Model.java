@@ -102,4 +102,8 @@ public class Model {
                 (one.x < two.x + two.width + speed && two.x + two.width + speed < one.x+one.width
                 && one.y < two.y+two.height && two.y+two.height < one.y+one.height);
     }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }
