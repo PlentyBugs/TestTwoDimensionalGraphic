@@ -1,6 +1,7 @@
 package TestTwoDimensionalGraphic;
 
-import TestTwoDimensionalGraphic.Animations.AnimationMoveTo;
+import TestTwoDimensionalGraphic.Animations.AnimationMoveToRegardingTheObject;
+import TestTwoDimensionalGraphic.Animations.AnimationMoveToRegardingTheWorld;
 import TestTwoDimensionalGraphic.Animations.Animator;
 
 import javax.swing.*;
@@ -32,11 +33,16 @@ public class MainPanel extends JPanel {
         addCreature(new Platform(0,0,720,50));
         Platform movablePlatform = new Platform(500, 200, 150, 10).setColor(Color.cyan);
 
-        Animator.addAnimation(new AnimationMoveTo(platformOne, platformOne.getModel().x + 50, platformOne.getModel().y - 50, true));
-        Animator.addAnimation(new AnimationMoveTo(platformTwo, platformTwo.getModel().x + 50, platformTwo.getModel().y - 50, true));
-        Animator.addAnimation(new AnimationMoveTo(platformThree, platformThree.getModel().x + 50, platformThree.getModel().y - 50, true));
-        Animator.addAnimation(new AnimationMoveTo(platformFour, platformFour.getModel().x + 50, platformFour.getModel().y - 50, true));
-        Animator.addAnimation(new AnimationMoveTo(movablePlatform, 350, movablePlatform.getModel().y, true));
+        Platform hpPlatform = new Platform(Game.player.getModel().getX()-5, Game.player.getModel().getY()-10, 30, 5);
+        hpPlatform.setCollision(false);
+        addCreature(hpPlatform);
+        Animator.addAnimation(new AnimationMoveToRegardingTheObject(hpPlatform, -5, -10, Game.player, false));
+
+        Animator.addAnimation(new AnimationMoveToRegardingTheWorld(platformOne, platformOne.getModel().x + 50, platformOne.getModel().y - 50, true));
+        Animator.addAnimation(new AnimationMoveToRegardingTheWorld(platformTwo, platformTwo.getModel().x + 50, platformTwo.getModel().y - 50, true));
+        Animator.addAnimation(new AnimationMoveToRegardingTheWorld(platformThree, platformThree.getModel().x + 50, platformThree.getModel().y - 50, true));
+        Animator.addAnimation(new AnimationMoveToRegardingTheWorld(platformFour, platformFour.getModel().x + 50, platformFour.getModel().y - 50, true));
+        Animator.addAnimation(new AnimationMoveToRegardingTheWorld(movablePlatform, 350, movablePlatform.getModel().y, true));
         addCreature(movablePlatform);
     }
 

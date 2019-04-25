@@ -51,7 +51,7 @@ public class Model {
     public Model addY(int y) {
         boolean col = false;
         for (Creature s : MainPanel.creatures){
-            if(s.getModel() != this && checkOnCollisionY(s.getModel(), this, y)){
+            if(s.getModel() != this && s.isCollision() == creature.isCollision() && s.isCollision() && checkOnCollisionY(s.getModel(), this, y)){
                 col = true;
                 if(y > 0){
                     creature.setOnAir(false);
@@ -68,7 +68,7 @@ public class Model {
     public Model addX(int x) {
         boolean col = false;
         for (Creature s : MainPanel.creatures){
-            if(s.getModel() != this && checkOnCollisionX(s.getModel(), this, x)){
+            if(s.getModel() != this && s.isCollision() == creature.isCollision() && s.isCollision() && checkOnCollisionX(s.getModel(), this, x)){
                 col = true;
                 break;
             }

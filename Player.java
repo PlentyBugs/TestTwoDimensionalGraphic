@@ -11,7 +11,8 @@ public class Player extends Creature{
         setSpeed(7000);
         setJumpPower(250);
         setAcceleration(0);
-        setMass(5);
+        setMass(8);
+        setCollision(true);
     }
 
     public Controller getController() {

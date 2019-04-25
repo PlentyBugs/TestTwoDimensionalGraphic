@@ -1,10 +1,8 @@
 package TestTwoDimensionalGraphic.Animations;
 
-import TestTwoDimensionalGraphic.Animations.Animation;
-import TestTwoDimensionalGraphic.Animations.Animator;
 import TestTwoDimensionalGraphic.Creature;
 
-public class AnimationMoveTo implements Animation {
+public class AnimationMoveToRegardingTheWorld implements Animation {
 
     private Creature creature;
     private int xStart;
@@ -13,7 +11,7 @@ public class AnimationMoveTo implements Animation {
     private int yGoal;
     private boolean cycle;
 
-    public AnimationMoveTo(Creature creature, int xGoal, int yGoal, boolean cycle){
+    public AnimationMoveToRegardingTheWorld(Creature creature, int xGoal, int yGoal, boolean cycle){
         this.creature = creature;
         this.xStart = creature.getModel().getX();
         this.yStart = creature.getModel().getY();
