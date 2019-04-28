@@ -29,7 +29,6 @@ public class AnimationMoveToRegardingTheObject implements Animation {
             if(removeOnFinish)
                 Animator.removeAnimation(this);
         } else {
-            System.out.println();
             step = Math.max((int)(Math.sqrt((yGoal + relativeCreature.getModel().getY() - creature.getModel().getY())*(yGoal + relativeCreature.getModel().getY() - creature.getModel().getY()) + (xGoal + relativeCreature.getModel().getX() - creature.getModel().getX())*(xGoal + relativeCreature.getModel().getX() - creature.getModel().getX())))/5, 1);
             if (creature.getModel().getX() < xGoal + relativeCreature.getModel().getX())
                 creature.getModel().addX(step);

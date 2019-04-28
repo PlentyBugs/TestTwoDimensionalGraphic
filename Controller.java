@@ -2,18 +2,18 @@ package TestTwoDimensionalGraphic;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Controller extends KeyAdapter {
 
     private Player player;
     private Thread playerControllerThread;
+    private int prevYPlayer;
 
     public Controller(Player player){
         this.player = player;
         playerControllerThread = new Thread(() -> {
             while (true){
+                prevYPlayer = player.getModel().getY();
                 if(player.isBottomDirection()){
                     player.getModel().addY(1);
                 }
@@ -39,7 +39,7 @@ public class Controller extends KeyAdapter {
         if(KeyEvent.VK_DOWN == e.getKeyCode() || KeyEvent.VK_S == e.getKeyCode()){
             player.setBottomDirection(true);
         }
-        if(!player.isOnAir() && (KeyEvent.VK_UP == e.getKeyCode() || KeyEvent.VK_W == e.getKeyCode())){
+        if((KeyEvent.VK_UP == e.getKeyCode() || KeyEvent.VK_W == e.getKeyCode())){
             player.jump();
         }
         if(KeyEvent.VK_LEFT == e.getKeyCode() || KeyEvent.VK_A == e.getKeyCode()){

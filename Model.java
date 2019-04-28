@@ -53,8 +53,8 @@ public class Model {
         for (Creature s : MainPanel.creatures){
             if(s.getModel() != this && s.isCollision() == creature.isCollision() && s.isCollision() && checkOnCollisionY(s.getModel(), this, y)){
                 col = true;
-                if(y > 0){
-                    creature.setOnAir(false);
+                if(creature instanceof Player && y > 0){
+                    creature.setCountOfJumps(creature.getMaxCountOfJumps());
                 }
                 break;
             }
@@ -79,9 +79,9 @@ public class Model {
         return this;
     }
 
-    private boolean checkOnCollisionY(Model one, Model two, int speed){
-        return (one.x < two.x && two.x < one.x+one.width
-                && one.y < two.y + speed && two.y+speed < one.y+one.height)
+    public boolean checkOnCollisionY(Model one, Model two, int speed){
+        return (one.x < two.x && two.x < one.x + one.width
+                && one.y < two.y + speed && two.y + speed < one.y+one.height)
                 ||
                 (one.x < two.x && two.x < one.x+one.width
                 && one.y < two.y + two.height + speed && two.y + two.height + speed < one.y+one.height)
@@ -93,7 +93,7 @@ public class Model {
                 && one.y < two.y + two.height + speed && two.y + two.height + speed < one.y+one.height);
     }
 
-    private boolean checkOnCollisionX(Model one, Model two, int speed){
+    public boolean checkOnCollisionX(Model one, Model two, int speed){
         return (one.x < two.x + speed && two.x + speed < one.x+one.width
                 && one.y < two.y && two.y < one.y+one.height)
                 ||
@@ -125,5 +125,9 @@ public class Model {
 
     public void setDrawModel(DrawModel drawModel) {
         this.drawModel = drawModel;
+    }
+
+    public Creature getCreature() {
+        return creature;
     }
 }

@@ -3,22 +3,28 @@ package TestTwoDimensionalGraphic;
 import TestTwoDimensionalGraphic.Animations.AnimationMoveToRegardingTheObject;
 import TestTwoDimensionalGraphic.Animations.AnimationMoveToRegardingTheWorld;
 import TestTwoDimensionalGraphic.Animations.Animator;
+import TestTwoDimensionalGraphic.Triggers.Trigger;
+import TestTwoDimensionalGraphic.Triggers.TriggerBlock;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MainPanel extends JPanel {
 
     private List<Model> shapes = new ArrayList<>();
-    public static ArrayList<Creature> creatures = new ArrayList<>();
+    public static Set<Creature> creatures = Collections.newSetFromMap(new ConcurrentHashMap<>());
     public static int startX = 0;
     public static int startY = 0;
 
     public MainPanel() {
         setBackground(Color.BLACK);
         addCreature(Game.player);
+        addCreature(new TriggerBlock(100,300,100,100));
         addCreature(new Platform(0, Game.height-80, 1440, 50));
         addCreature(new Platform(-50, 0, 50, 480));
         addCreature(new Platform(300,300,100,200));

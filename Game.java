@@ -14,6 +14,7 @@ public class Game {
 
     public static void main(String[] args){
         new Animator();
+        new Triggeroid();
         Animator.addAnimation(() -> player.getModel().setColor(new Color[]{Color.red, Color.cyan, Color.magenta, Color.ORANGE}[(int)(Math.random()*4)]));
         window = new Window(player);
         gravity = new ThatHowGravityWorks();

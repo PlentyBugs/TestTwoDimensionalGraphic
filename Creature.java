@@ -13,6 +13,8 @@ public class Creature {
     protected boolean bottomDirection = false;
     protected boolean leftDirection = false;
     protected boolean rightDirection = false;
+    protected int countOfJumps = 1;
+    protected int maxCountOfJumps = 1;
 
     public void setBottomDirection(boolean bottomDirection) {
         this.bottomDirection = bottomDirection;
@@ -94,24 +96,27 @@ public class Creature {
         this.model = model;
     }
 
-    public void jump(){
-        if(!onAir){
-            onAir = true;
-            Thread thread = new Thread(() -> {
-                for(int i = 0; i < jumpPower; i++){
-                    model.addY(-1);
-                    Game.window.drawWindow();
-                }
-            });
-            thread.start();
-        }
-    }
-
     public boolean isOnAir(){
         return onAir;
     }
 
     public void setOnAir(boolean onAir) {
         this.onAir = onAir;
+    }
+
+    public int getCountOfJumps() {
+        return countOfJumps;
+    }
+
+    public void setCountOfJumps(int countOfJumps) {
+        this.countOfJumps = countOfJumps;
+    }
+
+    public void setMaxCountOfJumps(int maxCountOfJumps) {
+        this.maxCountOfJumps = maxCountOfJumps;
+    }
+
+    public int getMaxCountOfJumps() {
+        return maxCountOfJumps;
     }
 }
